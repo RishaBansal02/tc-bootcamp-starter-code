@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TAMID Mixer Bouncer</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main id="app">
+
+  <!-- SCREEN 1: new or returning user -->
+  <section id="screen-start" class="screen active">
+    <div class="start-card">
+      <div class="neon">TAMID<br>MIXER</div>
+      <div class="hero">
+        <div class="hero-door"><span>♪</span><span>♫</span><span>♪</span></div>
+        <div class="hero-bouncer" id="start-hero"></div>
+      </div>
+      <p class="tagline">You're the bouncer tonight. Only real TAMID members get in.</p>
+      <div class="start-buttons">
+        <button class="btn primary" id="btn-new">New user</button>
+        <button class="btn" id="btn-old">Old user</button>
+      </div>
+      <p id="start-note" class="note"></p>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: character creation -->
+  <section id="screen-create" class="screen">
+    <h1 class="create-title" id="create-title">Create your bouncer</h1>
+    <div class="create-layout">
+      <div class="preview-wrap">
+        <div id="preview" class="preview"></div>
+        <div id="preview-name" class="badge">BOUNCER</div>
+      </div>
+      <form id="create-form" class="options" autocomplete="off">
+        <label class="field">
+          <span class="group-label">Name</span>
+          <input id="in-name" maxlength="20" placeholder="Your name" required>
+        </label>
+        <div id="option-groups"></div>
+        <p id="create-error" class="error"></p>
+        <button type="submit" class="btn primary wide" id="create-submit">Continue →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SCREEN: single player vs two players -->
+  <section id="screen-mode" class="screen">
+    <div class="mode-wrap">
+      <h1>Choose your shift</h1>
+      <p class="tagline" id="mode-greeting"></p>
+      <div class="mode-cards">
+        <button class="mode-card" id="btn-single">
+          <div class="mode-art" id="mode-art-single"></div>
+          <h2>Single player</h2>
+          <p>Work the door alone. Get 70% or more right to win.</p>
+        </button>
+        <button class="mode-card" id="btn-versus">
+          <div class="mode-art" id="mode-art-versus"></div>
+          <h2>Two players</h2>
+          <p>Bouncer vs Bouncer. One works the front of the house, one works the back. Best accuracy wins.</p>
+        </button>
+      </div>
+      <button class="btn small" id="btn-back-start">← Back</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 3: the door (one station, or two for bouncer vs bouncer) -->
+  <section id="screen-game" class="screen">
+    <div class="topbar">
+      <span id="mode-label" class="mode-label"></span>
+      <div class="topbar-buttons">
+        <button class="btn small" id="btn-edit">Edit avatar</button>
+        <button class="btn small" id="btn-mode">Change mode</button>
+      </div>
+    </div>
+    <div id="stations" class="stations"></div>
+  </section>
+
+  <!-- Result overlay -->
+  <div id="result" class="overlay hidden">
+    <div class="result-card">
+      <h1 id="result-title"></h1>
+      <p id="result-score" class="result-score"></p>
+      <div id="result-detail"></div>
+      <ul id="result-mistakes"></ul>
+      <div class="start-buttons">
+        <button class="btn primary" id="btn-again">Play again</button>
+        <button class="btn" id="btn-menu">Main menu</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<button id="music-toggle" class="music-toggle" aria-pressed="true">🔊 Music on</button>
+<div id="now-playing" class="now-playing" aria-live="polite"></div>
+
+<script src="js/music.js"></script>
+<script src="js/avatar.js"></script>
+<script src="js/rules.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
